@@ -165,3 +165,48 @@ if(mysqli_num_rows($re) > 0)
 								</span>				
 							
 							</div>
+
+							</div>
+						<div class="row">
+							<div class="large-6 columns" style="max-width:100%;">
+								<span class="" ><?php 
+								
+													foreach ($_SESSION['flightname'] as &$value0 ) {
+													echo $value0;
+													print "<br>";
+													} ;
+												?>
+												
+								</span>
+							</div>
+							
+							<div class="large-4 columns" style="max-width:100%;">
+								<span class="">
+								<?php foreach ($_SESSION['flightqty'] as &$value1 ) {
+													echo $value1;
+													print "<br>";
+													} ;
+												
+												?>
+								</span>				
+							
+							</div>
+
+							</div>
+						
+					</div>	
+				</div><br>
+				<div class="row">					
+						<div class="large-12 columns" style="max-width:100%;">
+							<p class="fontgrey borderstyle" style="text-align:center;">15% Deposit Due Now<br>
+							<span class="fontslabo " style="font-size:32px; text-align:center;">$ <?php echo $_SESSION['deposit'];?></span>
+							<br><span class="fontgrey" style="text-align:center;">Total</span><br>
+							<span class="fontslabo" style="font-size:32px; text-align:center;">$ <?php echo $_SESSION['total_amount'];?></span></p>
+							
+						</div>
+						
+						<div class="large-12 columns" style="max-width:100%;">
+							
+							
+						</div>
+				</div>
