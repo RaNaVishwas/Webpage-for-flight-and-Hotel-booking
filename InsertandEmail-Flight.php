@@ -186,4 +186,3 @@ echo '<script> alert("Login to continue"); </script>';
 header('Refresh: 0;url=signin.php');
 }
 ?>
-©
