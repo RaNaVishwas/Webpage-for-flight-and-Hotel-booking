@@ -263,3 +263,28 @@ if(mysqli_num_rows($re) > 0)
 					<br><button class="button small " border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" style="width:32%;background-color:#2ecc71; ">Pay Room Deposit Now</button>
 					<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 					</form>
+
+
+					</div>
+		</div>
+		</div>
+	
+
+
+	</div>
+
+
+</div>
+
+<script>
+</script>
+</body></html>
+<?php
+} 
+else
+{
+session_destroy();
+echo '<script> alert("Login to continue"); </script>';
+header('Refresh: 0;url=signin.php');
+}
+?>
