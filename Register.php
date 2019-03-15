@@ -25,3 +25,68 @@
 </div>
 
 <div class="row">
+	<div class="large-8 columns blackblur fontcolor" style="padding-top:10px;">
+		<p><b> Details</b><hr class="line"></p>
+		<form action="registerauth.php" method="POST"  >
+		  <div class="row">
+
+			<div class="large-6 columns">
+			  <label class="fontcolor">First Name*
+				<input name="firstname" type="text" id="firstname"  pattern="[a-zA-Z\s]+" Title="Only alphabet characters allowed" placeholder="" required />
+			  </label>
+			</div>
+			<div class="large-6 columns">
+			  <label class="fontcolor">Last Name*
+				<input name="lastname" type="text" id="lastname" pattern="[a-zA-Z\s]+" Title="Only alphabet characters allowed" placeholder="" required />
+			  </label>
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="large-6 columns">
+			  <label class="fontcolor">Email Address*
+				<input name="email" type="email"  id="email" placeholder="" required />
+			  </label>
+			</div>
+			<div class="large-6 columns">
+			  <label class="" style="color:black !important;">Telephone Number*
+				<input name="phone" type="text" id="phone"  pattern= "[^a-zA-Z]+" Title="Only numbers are allowed"  placeholder="" size="35" required/>
+			  </label>
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="large-6 columns">
+			  <label class="fontcolor">Address Line 1*
+				<input name="addressline1" type="text"   id="addressline1" placeholder="" required/>
+			  </label>
+			</div>
+			<div class="large-6 columns">
+			  <label class="fontcolor">Address Line 2
+				<input name="addressline2" type="text" id="addressline2"  placeholder=""/ />
+			  </label>
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="large-6 columns">
+			  <label class="fontcolor">Zip/Postcode*
+				<input name="postcode" type="text"  id="postcode" pattern= "[a-zA-Z0-9\s]+" Title="Special characters such as ( ) * & ^ % $ & etc are not allowed><;" required placeholder=""/ />
+			  </label>
+			</div>
+			<div class="large-6 columns">
+			  <label class="fontcolor">Password*
+				<input name="password" type="password"  id="password" pattern= "[a-zA-Z0-9\s]+" Title="Special characters such as ( ) * & ^ % $ & etc are not allowed><;" required placeholder=""/ />
+			  </label>
+			</div>
+		  </div>
+
+
+
+		  <div class="row">
+			<div class="large-12 columns" style="text-align:right;"><button name="submit" type="submit" id="submit" class="button small fontslabo" onSubmit="return validateForm(this);" style="background-color:#2ecc71;"  >Register</button>
+		  </div>
+
+		  </div>
+		</form>
+
+	</div>
+
+</div>
