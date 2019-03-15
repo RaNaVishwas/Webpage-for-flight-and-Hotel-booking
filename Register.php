@@ -90,3 +90,19 @@
 	</div>
 
 </div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ <script src="build/js/intlTelInput.js"></script>
+ <script>
+      $("#phone").intlTelInput({
+        //autoFormat: false,
+        //autoHideDialCode: false,
+         defaultCountry: "my",
+        //nationalMode: true,
+        //numberType: "MOBILE",
+        //onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+        preferredCountries: ['my', 'us'],
+        //responsiveDropdown: true,
+        utilsScript: "lib/libphonenumber/build/utils.js"
+      });
+ </script>
+</body></html>
