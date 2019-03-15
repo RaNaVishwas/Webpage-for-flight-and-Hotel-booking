@@ -221,3 +221,17 @@ if(mysqli_num_rows($re) > 0)
 
 
 	</div>
+<div class="large-8 columns blackblur fontcolor" style="padding:10px">
+	
+		<div class="large-12 columns" >
+		<p><b>Reservation Complete</b></p><hr class="line">
+		<p>Details of your reservation have just been sent to you
+		in a confirmation email. Please check your spam folder if you didn't received any email. We look forward to see you soon. In the
+		meantime, if you have any questions, feel free to contact us.</p>
+		<p>
+		<i class="icon-phone" style="font-size:24px"></i> <span class="i-name fontgrey">Phone</span><span class="i-code">&emsp; 60328951744</span><br>
+        <i class="icon-fax" style="font-size:24px"></i> <span class="i-name fontgrey">Fax</span><span class="i-code"> &emsp;&emsp;60328951744</span><br>
+        <i class="icon-mail-alt"style="font-size:24px"> </i> <span class="i-name fontgrey">Email</span><span class="i-code">&emsp; nicestuff@hotmail.com</span>
+		</p><hr>
+		<div class="row">
+			<div class="large-12 columns" >
