@@ -157,3 +157,70 @@ $_SESSION['childrens'] = $_POST["totalchildrens"];
 				// check available room
 				$datestart =  date('y-m-d', strtotime($_SESSION['checkin_unformat']) );
 				$dateend =  date('y-m-d', strtotime($_SESSION['checkout_unformat']));
+$result = mysqli_query($dbhandle,"SELECT r.room_id, (r.total_room-br.total) as availableroom from room as r LEFT JOIN (
+										SELECT roombook.room_id, sum(roombook.totalroombook) as total from roombook where roombook.booking_id IN
+											(
+												SELECT b.booking_id as bookingID from booking as b
+												where
+												(b.checkin_date between '".$datestart."' AND '".$dateend."')
+												OR
+												(b.checkout_date between '".$dateend."' AND '".$datestart."')
+											)
+										group by roombook.room_id
+										)
+										as br
+					 ON r.room_id = br.room_id");
+				if(mysqli_num_rows($result) > 0){
+					echo "<p><b>Choose Your Room</b></p><hr class=\"line\">";
+					print "				<form action=\"insertandemail.php\" method=\"post\">\n";
+					while ($row = mysqli_fetch_array($result)) {
+						if($row['availableroom'] != null && $row['availableroom'] > 0  )
+						{
+							$sub_result = mysqli_query($dbhandle,"select room.* from room where room.room_id = ".$row['room_id']." AND location='".$_SESSION['location_entered']."' ");
+							if(mysqli_num_rows($sub_result) > 0)
+							{
+								while($sub_row = mysqli_fetch_array($sub_result)){
+								print "					<p><h4>".$sub_row['room_name']."</h4></p>\n";
+								print "					<div class=\"row\">\n";
+								print "					\n";
+								print "						<div class=\"large-4 columns\">\n";
+								print "							<img src=\"".$sub_row['imgpath']."\"></img>\n";
+								print "						</div>\n";
+								print "						<div class=\"large-4 columns\">\n";
+								print "						<p><span class=\"fontgrey\">Occupancy : </span> ".$sub_row['occupancy']."<br>\n";
+								print "						<span class=\"fontgrey\">Size : </span> ".$sub_row['size']."\n";
+								print "						<span class=\"fontgrey\">View : </span> ".$sub_row['view']."\n";
+								print "						<br><span class=\"fontgrey\">Location : </span> ".$sub_row['location']."</p>\n";
+								print "\n";
+								print "						</div>\n";
+								print "						<div class=\"large-4 columns\">\n";
+								print "						<p ><span class=\"fontgrey\">Rate : $ </span><span style=\"font-size:24px;\">".$sub_row['rate']."</span><span class=\"fontgrey\">/ night</span><br>\n";
+								print "						<span style=\"text-align:right;\">".$row['availableroom']." room available</span>\n";
+								print "						</p>\n";
+								print "							<div class=\"row\">\n";
+								print "								<div class=\"large-11 columns\">\n";
+								print "									<label class=\"fontcolor\">\n";
+								print "										<select  class=\"no_of_room\" name=\"qtyroom".$sub_row['room_id']."\" id=\"room".$sub_row['room_id']."\" onChange=\"selection(".$sub_row['room_id'].")\"  style=\"width:100%; color:black; height:45px;\" ;\">\n";
+								print "											<option  value=\"0\">0</option>\n";
+																				$i = 1;
+																				while($i <= $row['availableroom'])
+																				{
+								print "											<option value=\"".$i."\">".$i."</option>\n";
+																				$i = $i+1;
+																				}
+								print "										</select>\n";
+								print "									</label>\n";
+								print "								</div>\n";
+								print "								<div class=\"large-1 columns\">\n";
+							    print "<input type=hidden name=\"selectedroom".$sub_row['room_id']."\"  id=\"selectedroom".$sub_row['room_id']."\" value=\"".$sub_row['room_id']."\">";
+								print "<input type=hidden name=\"room_name".$sub_row['room_id']."\" id=\"room_name".$sub_row['room_id']."\" value=\"".$sub_row['room_name']."\">";
+								print "								</div>\n";
+								print "							</div>\n";
+								print "						</div>\n";
+								print "						\n";
+								print "					</div>\n";
+								print "					\n";
+								print "				<hr>";
+								}
+							}
+						}
