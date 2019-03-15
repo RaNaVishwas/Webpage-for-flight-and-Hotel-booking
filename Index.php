@@ -243,3 +243,58 @@ input[type=text], input[type=password] {
 
           </div>
       </div>
+
+            <div class="row">
+
+          <div class="large-6 columns">
+            <label class="fontcolor">Adults
+
+                <select  name="totaladults" id="totaladults" style="width:100%;">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                </select>
+
+            </label>
+          </div>
+
+          <div class="large-6 columns"  style="max-width:100%;">
+            <label class="fontcolor">Children
+              <select  name="totalchildrens" id="totalchildrens" style="width:100%; color:black;">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              </select>
+            </label>
+          </div>
+
+
+      </div>
+
+        <div class="row">
+        <div class="large-12 columns" >
+          <button name="submit" href="#" class="button small fontslabo" style="background-color:#2ecc71; width:100%;" >Check Availability</button>
+        </div>
+        </div>
+      </form>
+  </div>
+
+
+
+</div>
