@@ -84,3 +84,84 @@ if(mysqli_num_rows($re) > 0)
 
 </div>
 </div>
+
+
+<div class="row">
+	<div class="large-4 columns blackblur fontcolor" style="margin-left:-10px; padding:10px;">
+	
+		<div class="large-12 columns " >
+		<p><b>Your Reservation</b></p><hr class="line">
+				<form name="guestdetails" action="unsetroomchosen.php" method="post" >
+				<div class="row">
+					<div class="large-12 columns">
+						<div class="row">
+						
+							<div class="large-5 columns" style="max-width:100%;">
+								<span class="fontgreysmall">Deparchar 
+								</span>
+							</div>
+							
+							<div class="large-5 columns" style="max-width:100%;">
+								<span class="">: <?php echo $_SESSION['checkin_date'];?>
+								</span>				
+							
+							</div>
+						</div>
+						<div class="row">
+							<div class="large-5 columns" style="max-width:100%;">
+								<span class="fontgreysmall">Adults
+								</span>
+							</div>
+							
+							<div class="large-5 columns" style="max-width:100%;">
+								<span class="">: <?php echo $_SESSION['adults'];?>
+								</span>				
+							
+							</div>
+						</div>
+						<div class="row">
+							<div class="large-5 columns" style="max-width:100%;">
+								<span class="fontgreysmall">Childrens
+								</span>
+							</div>
+							
+							<div class="large-5 columns" style="max-width:100%;">
+								<span class="">: <?php echo $_SESSION['childrens'];?>
+								</span>				
+							
+							</div>
+						</div>
+						<div class="row">
+							<div class="large-5 columns" style="max-width:100%;">
+								<span class="fontgreysmall">Flight from
+								</span>
+							</div>
+							
+							<div class="large-5 columns" style="max-width:100%;">
+								<span class="">: <?php echo $_SESSION['flight_from'];?>
+								</span>				
+							
+							</div>
+						</div>
+						<div class="row">
+							<div class="large-5 columns" style="max-width:100%;">
+								<span class="fontgreysmall">Flight to
+								</span>
+							</div>
+							
+							<div class="large-5 columns" style="max-width:100%;">
+								<span class="">: <?php echo $_SESSION['flight_to'];?>
+								</span>				
+							
+							</div>
+						</div>
+						<div class="row"><hr>
+							<div class="large-6 columns" style="max-width:100%;">
+								<span class="fontgreysmall" >Flight Selected
+								</span>
+							</div>
+							
+							<div class="large-4 columns" style="max-width:100%;">
+								<span class="fontgreysmall">Seats
+								</span>				
+				
