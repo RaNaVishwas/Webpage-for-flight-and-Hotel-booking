@@ -247,3 +247,19 @@ if(mysqli_num_rows($re) > 0)
 					<br><button class="button small " border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" style="width:32%;background-color:#2ecc71; ">Pay Room Deposit Now</button>
 					<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 					</form-->
+
+					<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+					<input type="hidden" name="cmd" value="_s-xclick">
+					<input type="hidden" name="hosted_button_id" value="3FWZ42DLC5BJ2">
+					<input type="hidden" name="lc" value="MY">
+					<input type="hidden" name="item_name" value="15% Hotel Deposit Payment for Booking ID #<?echo $_SESSION['booking_id'];?>">
+					<input type="hidden" name="amount" value="<?php $amount = $_SESSION['deposit']; print $amount; ?>">
+					<input type="hidden" name="currency_code" value="MYR">
+					<input type="hidden" name="button_subtype" value="services">
+					<input type="hidden" name="no_note" value="0">
+					<input type="hidden" name="custom" value="<? echo $_SESSION['booking_id'];?>">
+					<input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
+					<img type="image" src="img/paypal.jpg" style="background-color:white; width:32%; height:14%; padding:2px; " ></img>
+					<br><button class="button small " border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" style="width:32%;background-color:#2ecc71; ">Pay Room Deposit Now</button>
+					<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+					</form>
