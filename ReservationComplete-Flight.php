@@ -106,4 +106,38 @@ if(mysqli_num_rows($re) > 0)
 							
 							</div>
 						</div>
-						
+						<div class="row">
+							<div class="large-5 columns" style="max-width:100%;">
+								<span class="fontgreysmall">Adults
+								</span>
+							</div>
+							
+							<div class="large-5 columns" style="max-width:100%;">
+								<span class="">: <?php echo $_SESSION['adults'];?>
+								</span>				
+							
+							</div>
+						</div>
+						<div class="row">
+							<div class="large-5 columns" style="max-width:100%;">
+								<span class="fontgreysmall">Childrens
+								</span>
+							</div>
+							
+							<div class="large-5 columns" style="max-width:100%;">
+								<span class="">: <?php echo $_SESSION['childrens'];?>
+								</span>				
+							
+							</div>
+						</div>
+						<div class="row">
+							<div class="large-5 columns" style="max-width:100%;">
+								<span class="fontgreysmall">Flight from
+								</span>
+							</div>
+							
+							<div class="large-5 columns" style="max-width:100%;">
+								<span class="">: <?php echo $_SESSION['flight_from'];?>
+								</span>				
+							
+							</div>
