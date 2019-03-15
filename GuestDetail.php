@@ -70,3 +70,11 @@ echo "        </label>\n";
 echo "      </div>\n"; 
 echo "      </div>\n"; 
 echo "      <div class=\"row\">\n"; 
+
+  echo "      <div class=\"large-12 columns\" >\n"; 
+echo "      <div class=\"large-6 columns\"><button type=\"button\" class=\"button small fontslabo\" style=\"background-color:#2ecc71;\"  onClick=\"return confirmeverything();\"><a href=\"reservationdetail.php\">Confirm</a></button>\n"; 
+echo "      </div>\n"; 
+echo "      </div>\n"; 
+echo "      </div>\n"; 
+echo "    </form>\n";
+?>
