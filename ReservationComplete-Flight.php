@@ -210,3 +210,14 @@ if(mysqli_num_rows($re) > 0)
 							
 						</div>
 				</div>
+<div class="row">
+					<div class="large-12 columns" >
+						<button name="submit" href="#" class="button small fontslabo" style="background-color:#2ecc71; width:100%;">Edit Reservation</button>
+					</div>
+				  </div>
+				</form>
+		</div>
+	
+
+
+	</div>
