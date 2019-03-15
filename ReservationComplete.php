@@ -178,3 +178,18 @@ if(mysqli_num_rows($re) > 0)
 												
 								</span>
 							</div>
+<div class="large-4 columns" style="max-width:100%;">
+								<span class="">
+								<?php foreach ($_SESSION['flightqty'] as &$value1 ) {
+													echo $value1;
+													print "<br>";
+													} ;
+												
+												?>
+								</span>				
+							
+							</div>
+						</div>
+						
+					</div>	
+				</div><br>
