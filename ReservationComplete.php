@@ -164,4 +164,17 @@ if(mysqli_num_rows($re) > 0)
 							<div class="large-4 columns" style="max-width:100%;">
 								<span class="fontgreysmall">Seats
 								</span>				
-				
+				</div>
+						</div>
+						<div class="row">
+							<div class="large-6 columns" style="max-width:100%;">
+								<span class="" ><?php 
+								
+													foreach ($_SESSION['flightname'] as &$value0 ) {
+													echo $value0;
+													print "<br>";
+													} ;
+												?>
+												
+								</span>
+							</div>
