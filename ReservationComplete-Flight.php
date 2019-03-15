@@ -78,3 +78,32 @@ if(mysqli_num_rows($re) > 0)
 			<p class="fontgrey">Reservation Complete</p>
 		</div>
 </div>
+
+
+</div>
+
+</div>
+</div>
+ 
+<div class="row">
+	<div class="large-4 columns blackblur fontcolor" style="margin-left:-10px; padding:10px;">
+	
+		<div class="large-12 columns " >
+		<p><b>Your Reservation</b></p><hr class="line">
+				<form name="guestdetails" action="unsetroomchosen.php" method="post" >
+				<div class="row">
+					<div class="large-12 columns">
+						<div class="row">
+						
+							<div class="large-5 columns" style="max-width:100%;">
+								<span class="fontgreysmall">Deparchar 
+								</span>
+							</div>
+							
+							<div class="large-5 columns" style="max-width:100%;">
+								<span class="">: <?php echo $_SESSION['checkin_date'];?>
+								</span>				
+							
+							</div>
+						</div>
+						
