@@ -135,3 +135,67 @@ $message .="                    <br><button class=\"button small \" border=\"0\"
 $message .="                    <img alt=\"\" border=\"0\" src=\"https://www.paypalobjects.com/en_US/i/scr/pixel.gif\" width=\"1\" height=\"1\">\n";
 $message .="                    </form>";
 $message .="                    <br>Notes & Policy:</b>\n";
+$message .="                                                    <br><b>";
+$message .="                     <form action=\"reservationcomplete.php\" method=\"post\" target=\"_top\">\n";
+$message .="                    <input type=\"hidden\" name=\"cmd\" value=\"_s-xclick\">\n";
+$message .="                    <input type=\"hidden\" name=\"hosted_button_id\" value=\"3FWZ42DLC5BJ2\">\n";
+$message .="                    <input type=\"hidden\" name=\"lc\" value=\"MY\">\n";
+$message .="                    <input type=\"hidden\" name=\"item_name\" value=\"15% Hotel Deposit for Booking ID #".$_SESSION['booking_id']."; \">\n";
+$message .="                    <input type=\"hidden\" name=\"amount\" value=\"".$_SESSION['deposit']."\">\n";
+$message .="                    <input type=\"hidden\" name=\"currency_code\" value=\"MYR\">\n";
+$message .="                    <input type=\"hidden\" name=\"button_subtype\" value=\"services\">\n";
+$message .="                    <input type=\"hidden\" name=\"no_note\" value=\"0\">\n";
+$message .="                    <input type=\"hidden\" name=\"bn\" value=\"PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest\">\n";
+$message .="                    <input type=\"hidden\" name=\"custom\" value=\"".$_SESSION['booking_id']."\">\n";
+$message .="                    <br><button class=\"button small \" border=\"0\" name=\"submit\" alt=\"PayPal - The safer, easier way to pay online!\" style=\"background-color:#2ecc70;border:0px solid #18ab29; display:inline-block; color:#ffffff; font-size:15px; padding:5px 5px;\">Pay Deposit Via Paypal Here</button>\n";
+$message .="                    <img alt=\"\" border=\"0\" src=\"https://www.paypalobjects.com/en_US/i/scr/pixel.gif\" width=\"1\" height=\"1\">\n";
+$message .="                    </form>";
+$message .="                    <br>Notes & Policy:</b>\n";
+$message .="                                                            <br>\n";
+$message .="                                                            <b>1. Please pay 15% deposit to confirmed your booking.</b><br>\n";
+$message .="                                                            2. This hotel are not allowed etc etc<br>\n";
+$message .="                                                            3. Please check in before bla bla<br>\n";
+$message .="                                                            4. The hotel management has right to cancelled the booking\n";
+$message .="                                                            <br>\n";
+$message .="                                                            \n";
+$message .="                                                </td>\n";
+$message .="                                            </tr>\n";
+$message .="                                        </table>\n";
+$message .="                                    </td>\n";
+$message .="                                </tr>\n";
+$message .="                                <tr>\n";
+$message .="                                </tr>\n";
+$message .="                                <tr>\n";
+$message .="                                    <td>\n";
+$message .="                                        <br><br>Hotel Address, Street Your address, 50450 Kuala Lumpur, Malaysia\n";
+$message .="                                    </td>\n";
+$message .="                                </tr>\n";
+$message .="                            </table>\n";
+$message .="                        </td>\n";
+$message .="                    </tr>\n";
+$message .="                </table>\n";
+$message .="                <div class=\"footer\">\n";
+$message .="                    <table width=\"100%\">\n";
+$message .="                        <tr>\n";
+$message .="                            <td><br>Questions? Email <a href=\"mailto:\">info@hotel.com.my or Call Us at 0000000</a></td>\n";
+$message .="                        </tr>\n";
+$message .="                    </table>\n";
+$message .="                </div></div>\n";
+$message .="        </td>\n";
+$message .="        <td></td>\n";
+$message .="    </tr>\n";
+$message .="</table>";
+$message .="</body></html>";
+$headers  ="From: ";
+$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+mail($to, $subject, $message, $headers);
+header("location: reservationcomplete.php");
+} 
+else
+{
+session_destroy();
+echo '<script> alert("Login to continue"); </script>';
+header('Refresh: 0;url=signin.php');
+}
+?>
