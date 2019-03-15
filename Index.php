@@ -157,3 +157,89 @@ input[type=text], input[type=password] {
   margin: 7px 73px;
 }
 /* Set a style for all buttons */
+</style>
+<meta class="foundation-data-attribute-namespace"><meta class="foundation-mq-xxlarge"><meta class="foundation-mq-xlarge"><meta class="foundation-mq-large">
+<meta class="foundation-mq-medium"><meta class="foundation-mq-small"><style></style><meta class="foundation-mq-topbar"></head>
+<body class="fontbody" style="background-image : url(img/background.jpg); no-repeat center center fixed; background-size: cover;">
+ <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid" style="background-color: #4aa3df;">
+  <?php
+  if(isset(($_SESSION['email']))){
+       echo' <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="signout.php" style="color: #ffffff;">Sign Out</a></li>
+          </ul>
+        </div>';
+  }
+  else{
+    echo' <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="signin.php" > <button type="button" style="color: #ffffff;">Sign In </button></a></li>
+          </ul>
+        </div>';
+    echo' <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="register.php" > <button type="button" style="color: #ffffff;">Register </button></a></li>
+          </ul>
+        </div>';
+    echo' <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+                <li><a href="admin/index.html" > <button type="button" style="color: #ffffff;">SuperAdmin </button></a></li>
+          </ul>
+          </div>';
+    echo' <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li><a href="admin/flight.php" > <button type="button" style="color: #ffffff;">Flight Admin </button></a></li>
+          </ul>
+          </div>';
+    echo' <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li><a href="admin/hotel.php" > <button type="button" style="color: #ffffff;">Hotel Admin </button></a></li>
+          </ul>
+          </div>';
+  }
+    ?>
+      </div>
+    </nav>
+
+
+
+<div class="row">
+  <div class="large-4 columns blackblur fontcolor" style="padding-top:10px;">
+
+  <div class="large-12 columns " >
+  <p><b>Check Date</b></p><hr class="line">
+      <form name="form" action="checkroom.php" method="post" onSubmit="return validateForm(this);">
+      <div class="row">
+
+          <div class="large-6 columns" style="max-width:100%;">
+            <label class="fontcolor" for="checkin">Check In
+              <input name="checkin" id="checkin" style="width:100%;"/>
+            </label>
+          </div>
+
+          <div class="large-6 columns" style="max-width:100%;">
+            <label class="fontcolor" for="checkout">Check Out
+              <input name="checkout" id="checkout" style="width:100%;"/>
+            </label>
+
+
+          </div>
+      </div>
+      <div class="row">
+          <div class="large-6 columns" style="max-width:100%;">
+            <label class="fontcolor" for="location">Location
+              <select  class="no_of_room" name="location" id="location">
+                  <option value="" selected="selected">Select Location</option>
+                <?php
+                  include './auth.php';
+                  $result1 = mysqli_query($dbhandle,"SELECT DISTINCT location FROM room ");
+                  while( $rows = mysqli_fetch_assoc($result1) ) {
+                              ?>
+                  <option value="<?php echo $rows["location"]; ?>"><?php echo $rows["location"]; ?></option>
+                <?php } ?>
+              </select>
+            </label>
+
+          </div>
+      </div>
