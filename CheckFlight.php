@@ -65,3 +65,147 @@ $_SESSION['childrens'] = $_POST["totalchildrens"];
 					<div class="large-12 columns">
 						<div class="row">
 						
+<div class="large-6 columns" style="max-width:100%;">
+								<span class="fontgrey">Departure
+								</span>
+							</div>
+							
+							<div class="large-4 columns" style="max-width:100%;">
+								<span class="">: <?php echo $_SESSION['checkin_date'];?>
+								</span>				
+							
+							</div>
+						</div>
+						<div class="row">
+							<div class="large-6 columns" style="max-width:100%;">
+								<span class="fontgrey">Adults
+								</span>
+							</div>
+							
+							<div class="large-4 columns" style="max-width:100%;">
+								<span class="">: <?php echo $_SESSION['adults'];?>
+								</span>				
+							
+							</div>
+						</div>
+						<div class="row">
+							<div class="large-6 columns" style="max-width:100%;">
+								<span class="fontgrey">Childrens
+								</span>
+							</div>
+							
+							<div class="large-4 columns" style="max-width:100%;">
+								<span class="">: <?php echo $_SESSION['childrens'];?>
+								</span>				
+							
+							</div>
+						</div>
+						
+					</div>	
+				</div>
+						
+
+				
+				  <div class="row">
+					<div class="large-12 columns" >
+						<br><button name="submit" href="#" class="button small fontslabo" style="background-color:#2ecc71; width:100%;" >Edit Reservation</button>
+					</div>
+				  </div>
+				</form>
+		</div>
+		<div class="large-12 columns" id="flightselected" style="display:none;" >
+				<hr>
+							<br><label for="submit-form" class="book button small fontslabo" style="background-color:#2ecc71; width:100%; height:45px; !important;">Proceed To Book</label><!--button name="submit" href="#" class="button small fontslabo" style="background-color:#2ecc71; width:100%;" >Proceed Booking</button-->
+
+		</div>
+	
+
+
+	</div>
+	<div class="large-8 columns blackblur fontcolor" style="padding:10px">
+	 
+		<div class="large-12 columns" >
+			<?php
+				include './auth.php';
+				// check available flight
+				$datestart =  date('y-m-d', strtotime($_SESSION['checkin_date']) );
+				//$dateend =  date('y-m-d', strtotime($_SESSION['checkout_unformat']));
+				
+				$result = mysqli_query($dbhandle,"SELECT r.flight_id, (r.total_seats-br.total) as availableseats from flight as r LEFT JOIN ( 
+				
+										SELECT flightbook.flight_id, sum(flightbook.totalflightbook) as total from flightbook where flightbook.booking_id IN 
+											(
+												SELECT b.booking_id as bookingID from flight_booking as b 
+												where 
+												(b.checkin_date between '".$datestart."' AND '".$datestart."') 
+												OR 
+												(b.checkout_date between '".$datestart."' AND '".$datestart."')
+												
+											)
+										
+										group by flightbook.flight_id
+										)
+										as br
+					 
+					 ON r.flight_id = br.flight_id");
+				
+				if(mysqli_num_rows($result) > 0){
+					echo "<p><b>Choose Your Flight</b></p><hr class=\"line\">";
+					print "				<form action=\"insertandemail_flight.php\" method=\"post\">\n";
+					
+							
+					while ($row = mysqli_fetch_array($result)) {
+				
+								
+						if($row['availableseats'] != null && $row['availableseats'] > 0  )
+						{
+							
+							$sub_result = mysqli_query($dbhandle,"select flight.* from flight where flight.flight_id = ".$row['flight_id']." AND flight_from='".$_SESSION['departure']."' AND flight_to='".$_SESSION['arrive']."'  ");
+							
+							if(mysql_num_rows($sub_result) > 0)
+							{
+								
+								while($sub_row = mysqli_fetch_array($sub_result)){
+								
+								
+								print "					<p><h4>".$sub_row['flight_name']."</h4></p>\n";
+								print "					<div class=\"row\">\n";
+								print "					\n";
+								print "						<div class=\"large-4 columns\">\n";
+								print "							<img src=\"".$sub_row['imgpath']."\"></img>\n";
+								print "						</div>\n";
+								print "						<div class=\"large-4 columns\">\n";
+								print "						<p><span class=\"fontgrey\">Occupancy : </span> ".$sub_row['occupancy']."<br>\n";
+								print "						<br><span class=\"fontgrey\">From : </span> ".$sub_row['flight_from']."\n";
+								print "						<br><span class=\"fontgrey\">To : </span> ".$sub_row['flight_to']."</p>\n";
+								print "\n";
+								print "						</div>\n";
+								print "						<div class=\"large-4 columns\">\n";
+								print "						<p ><span class=\"fontgrey\">Rate : MYR </span><span style=\"font-size:24px;\">".$sub_row['rate']."</span><span class=\"fontgrey\">/ seat</span><br>\n";
+								print "						<span style=\"text-align:right;\">".$row['availableseats']." seats available</span>\n";
+								print "						</p>\n";
+								print "							<div class=\"row\">\n";
+								print "								<div class=\"large-11 columns\">\n";
+								print "									<label class=\"fontcolor\">\n";
+								print "										<select  class=\"no_of_flight\" name=\"qtyflight".$sub_row['flight_id']."\" id=\"flight".$sub_row['flight_id']."\" onChange=\"selection(".$sub_row['flight_id'].")\"  style=\"width:100%; color:black; height:45px;\" ;\">\n";
+								print "											<option  value=\"0\">0</option>\n";
+																				$i = 1;
+																				while($i <= $row['availableseats'])
+																				{
+								print "											<option value=\"".$i."\">".$i."</option>\n";	
+																				$i = $i+1;
+																				}
+								print "										</select>\n";
+								print "									</label>\n";
+								print "								</div>\n";
+								print "								<div class=\"large-1 columns\">\n";
+							    print "<input type=hidden name=\"selectedflight".$sub_row['flight_id']."\"  id=\"selectedflight".$sub_row['flight_id']."\" value=\"".$sub_row['flight_id']."\">";
+								print "<input type=hidden name=\"flight_name".$sub_row['flight_id']."\" id=\"flight_name".$sub_row['flight_id']."\" value=\"".$sub_row['flight_name']."\">";
+								print "								</div>\n";
+								print "							</div>\n";
+								print "						</div>\n";
+								print "						\n";
+								print "					</div>\n";
+								print "					\n";
+								print "				<hr>";
+								}
