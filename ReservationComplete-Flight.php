@@ -20,3 +20,24 @@ if(mysqli_num_rows($re) > 0)
 						}
 	
 				$result = mysqli_query($dbhandle,"select * from flight");
+
+				if(mysqli_num_rows($result) > 0){
+	
+				
+						$count = 0;
+						
+						while($row = mysqli_fetch_array($result)){
+						
+							if (isset($_POST["qtyflight".$row['flight_id'].""])   && !empty($_POST["qtyflight".$row['flight_id'].""]) )
+							{
+								$_SESSION['flight_id'][$count] = $_POST["selectedflight".$row['flight_id'].""];
+								$_SESSION['flightqty'][$count] = $_POST["qtyflight".$row['flight_id'].""];
+								$_SESSION['flightname'][$count] = $_POST["flight_name".$row['flight_id'].""];
+								$_SESSION['flight_from']= $row['flight_from'];
+								$_SESSION['flight_to']= $row['flight_to'];
+								$_SESSION['ind_rate'][$count] = $row['rate']  * $_POST["qtyflight".$row[flight_id].""];
+								$_SESSION['total_amount'] =  ( $row['rate']  * $_POST["qtyflight".$row[flight_id].""] * $_SESSION['total_night'] ) + $_SESSION['total_amount'] ;
+								$_SESSION['deposit'] = $_SESSION['total_amount'] * 0.15;
+								$count = $count + 1;
+							}
+						}
