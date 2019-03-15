@@ -298,3 +298,105 @@ input[type=text], input[type=password] {
 
 
 </div>
+
+<div class="large-4 columns blackblur fontcolor" style="padding-top:10px;">
+
+  <div class="large-12 columns " >
+  <p><b>Check Flight Date</b></p><hr class="line">
+      <form name="form" action="checkflight.php" method="post" onSubmit="return validateForm(this);">
+      <div class="row">
+
+          <div class="large-6 columns" style="max-width:100%;">
+            <label class="fontcolor" for="departure">Date
+              <input name="departure" id="departure" style="width:100%;"/>
+            </label>
+          </div>
+
+
+      </div>
+      <div class="row">
+
+          <div class="large-6 columns" style="max-width:100%;">
+            <label class="fontcolor" for="departure">Departure
+              <select  class="no_of_room" name="flight_from" id="flight_from">
+                  <option value="" selected="selected">Select Departure</option>
+                <?php
+                  include './auth.php';
+                  $result2 = mysqli_query($dbhandle,"SELECT flight_from FROM flight ");
+                  while( $rows1 = mysqli_fetch_assoc($result2) ) {
+                              ?>
+                  <option value="<?php echo $rows1["flight_from"]; ?>"><?php echo $rows1["flight_from"]; ?></option>
+                <?php } ?>
+              </select>
+            </label>
+          </div>
+          <div class="large-6 columns" style="max-width:100%;">
+            <label class="fontcolor" for="departure">Arive At
+              <select  class="no_of_room" name="flight_to" id="flight_to">
+                  <option value="" selected="selected">Select Arive</option>
+                <?php
+                  include './auth.php';
+                  $result3 = mysqli_query($dbhandle,"SELECT flight_to FROM flight ");
+                  while( $rows1 = mysqli_fetch_assoc($result3) ) {
+                              ?>
+                  <option value="<?php echo $rows1["flight_to"]; ?>"><?php echo $rows1["flight_to"]; ?></option>
+                <?php } ?>
+              </select>
+            </label>
+          </div>
+
+
+      </div>
+
+      <div class="row">
+
+          <div class="large-6 columns">
+            <label class="fontcolor">Adults
+
+                <select  name="totaladults" id="totaladults" style="width:100%;">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                </select>
+
+            </label>
+          </div>
+
+          <div class="large-6 columns"  style="max-width:100%;">
+            <label class="fontcolor">Children
+              <select  name="totalchildrens" id="totalchildrens" style="width:100%; color:black;">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              </select>
+            </label>
+          </div>
+
+
+      </div>
+
+        <div class="row">
+        <div class="large-12 columns" >
+          <button name="submit" href="#" class="button small fontslabo" style="background-color:#2ecc71; width:100%;" >Check Availability</button>
+        </div>
+        </div>
+      </form>
+  </div>
+
+
