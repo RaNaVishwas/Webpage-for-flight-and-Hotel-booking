@@ -208,4 +208,77 @@ $_SESSION['childrens'] = $_POST["totalchildrens"];
 								print "					</div>\n";
 								print "					\n";
 								print "				<hr>";
+								}}
+						}
+						else if($row['availableseats'] == null ){
+							$sub_result2 = mysqli_query($dbhandle,"select flight.* from flight where flight.flight_id = ".$row['flight_id']." AND flight_from='".$_SESSION['departure']."' AND flight_to='".$_SESSION['arrive']."'");
+							if(mysqli_num_rows($sub_result2) > 0)
+							{
+								while($sub_row2 = mysqli_fetch_array($sub_result2)){
+								
+								print "					<p><h4>".$sub_row2['flight_name']."</h4></p>\n";
+								print "					<div class=\"row\">\n";
+								print "					\n";
+								print "						<div class=\"large-4 columns\">\n";
+								print "							<img src=\"".$sub_row2['imgpath']."\"></img>\n";
+								print "						</div>\n";
+								print "						<div class=\"large-4 columns\">\n";
+								print "						<p><span class=\"fontgrey\">Occupancy : </span> ".$sub_row2['occupancy']."<br>\n";
+								print "						<br><span class=\"fontgrey\">From : </span> ".$sub_row2['flight_from']."\n";
+								print "						<br><span class=\"fontgrey\">To : </span> ".$sub_row2['flight_to']."</p>\n";
+								print "\n";
+								print "						</div>\n";
+								print "						<div class=\"large-4 columns\">\n";
+								print "						<p ><span class=\"fontgrey\">Rate : $ </span><span style=\"font-size:24px;\">".$sub_row2['rate']."</span><span class=\"fontgrey\">/ seatg</span><br>\n";
+								print "						<span style=\"text-align:right;\">".$sub_row2['total_seats']." seats available</span>\n";
+								print "						</p>\n";
+								print "							<div class=\"row\">\n";
+								print "								<div class=\"large-11 columns\">\n";
+								print "									<label class=\"fontcolor\">\n";
+								print "										<select  class=\"no_of_flight\" name=\"qtyflight".$sub_row2['flight_id']."\"  id=\"flight".$sub_row2['flight_id']."\" onChange=\"selection(".$sub_row2['flight_id'].")\" style=\"width:100%; color:black; height:45px;\" >\n";
+								print "											<option value=\"0\">0</option>\n";
+																				$i = 1;
+																				while($i <= $sub_row2['total_seats'])
+																				{
+								print "											<option value=\"".$i."\">".$i."</option>\n";	
+																				$i = $i+1;
+																				}
+								print "										</select>\n";
+								print "									</label>\n";
+								print "								</div>\n";
+								print "								<div class=\"large-1 columns\">\n";
+							    print "<input type=hidden name=\"selectedflight".$sub_row2['flight_id']."\" value=\"".$sub_row2['flight_id']."\">";
+								print "<input type=hidden name=\"flight_name".$sub_row2['flight_id']."\" value=\"".$sub_row2['flight_name']."\">";
+								//print "				<button type=\"submit\"  class=\"book button small\" style=\"background-color:#2ecc71; width:100%; height:45px; !important;\" >Book</button>\n";	
+								print "								</div>\n";
+								print "							</div>\n";
+								print "						</div>\n";
+								print "						\n";
+								print "					</div>\n";
+								print "					\n";
+								print "				<hr>";
 								}
+								
+							}		
+						}
+					}
+				}		
+				else{
+				echo "<p><b>No flight available</b></p><hr>";
+				}
+					print "<button type=\"submit\" id=\"submit-form\" class=\"hidden\" style=\"display:none\">Book</button>\n";
+							print "	</form>";	
+			?>
+		</div>
+	
+
+
+	</div>
+
+</div>
+<script>
+function selection(id) {
+	var e = document.getElementById('flightselected').style.display='block';
+}
+</script>
+</body></html>
