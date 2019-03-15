@@ -55,3 +55,93 @@
    }
 </script>
 
+</div>
+</div>
+ 
+<div class="row">
+  <div class="large-4 columns">
+  </div>
+  <div class="large-8 columns blackblur fontcolor" style="padding-top:10px;">
+    <p><b>Guest Details</b></p><hr>
+    <form>
+      <div class="row">
+      <div class="large-6 columns">
+        <label class="fontcolor">First Name*
+        <input id="firstname" type="text" placeholder="" />
+        </label>
+      </div>
+      <div class="large-6 columns">
+        <label class="fontcolor">Last Name*
+        <input id="lastname" type="text" placeholder="" />
+        </label>
+      </div>
+      </div>
+      <div class="row">
+      <div class="large-6 columns">
+        <label class="fontcolor">Email Address*
+        <input id="email" type="text" placeholder="" />
+        </label>
+      </div>
+      <div class="large-6 columns">
+        <label class="fontcolor">Telephone Number*
+        <input id="phone" type="text" placeholder="" />
+        </label>
+      </div>
+      </div>
+      <div class="row">
+      <div class="large-6 columns">
+        <label class="fontcolor">Address Line 1*
+        <input id="addressline1" type="text" placeholder="" />
+        </label>
+      </div>
+      <div class="large-6 columns">
+        <label class="fontcolor">Address Line 2
+        <input id="addressline2" type="text" placeholder="" />
+        </label>
+      </div>
+      </div>
+      <div class="row">
+      <div class="large-6 columns">
+        <label class="fontcolor">Zip/Postcode*
+        <input id="postcode" type="text" placeholder="" />
+        </label>
+      </div>
+      <div class="large-6 columns">
+        <label class="fontcolor">City*
+        <input id="city" type="text" placeholder="" />
+        </label>
+      </div>
+      </div>
+      <div class="row">
+      <div class="large-6 columns">
+        <label class="fontcolor">State*
+        <input id="state" type="text" placeholder="" />
+        </label>
+      </div>
+      <div class="large-6 columns">
+        <label class="fontcolor">Country*
+        <input id="country" type="text" placeholder="" />
+        </label>
+      </div>
+      </div>
+      
+      <div class="row">
+      <div class="large-12 columns">
+        <label class="fontcolor">Special Requirements
+        <textarea id="specialrequirements" placeholder=""></textarea>
+        </label>
+      </div>
+      </div>
+      <div class="row">
+      <div class="large-12 columns" >
+        <input type="button" id="paysubmit" class="button small" style="background-color:#2ecc71;" onclick="addStorage();"><b>Book Now and Pay Deposit</b></a>
+      </div>
+      </div>
+    </form>
+
+  </div>
+
+</div>
+
+
+</body></html>
